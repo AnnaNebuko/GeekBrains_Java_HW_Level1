@@ -1,24 +1,24 @@
 package ru.geekbrains.gb;
 
-public class Dog extends Animal{
+public class Dog extends Animal {
+    private static int countAnimal;
 
-    public Dog(String name) {
-        super(name);
+    public static int getCountAnimal() {
+        return countAnimal;
+    }
+
+    public Dog(int maxRunDistance, int maxSwimDistance) {
+        super("Doggy", maxRunDistance, maxSwimDistance);
+        countAnimal ++;
     }
 
     @Override
-    void run(int length) {
-        if (length > 500 || length < 0) System.out.println
-                ("Sorry! Invalid number");
-        else System.out.printf("%s has run %d" +
-                " meters.%n", name, length);
+    public boolean run(int length) {
+        return length <= getMaxRunDistance();
     }
 
     @Override
-    void swim(int length) {
-        if (length > 10 || length < 0) System.out.println
-                ("Sorry! Invalid number");
-        else System.out.printf("%s has swum %d" +
-                " meters.%n", name, length);
+    public boolean swim(int length) {
+        return length <= getMaxSwimDistance();
     }
 }

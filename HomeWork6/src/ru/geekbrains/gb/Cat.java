@@ -2,16 +2,28 @@ package ru.geekbrains.gb;
 
 
 public class Cat extends Animal{
+    private int maxRunDistance;
+    private static int countAnimal;
 
-    public Cat(String name) {
-        super(name);
+    public static int getCountAnimal() {
+        return countAnimal;
+    }
+
+    public Cat(int maxRunDistance) {
+        super("Kitty", maxRunDistance, 0);
+        maxRunDistance = 200;
+        countAnimal++;
     }
 
     @Override
-    void run(int length) {
-        if (length > 200 || length < 0) System.out.println
-                ("Sorry! Invalid number");
-        else System.out.printf("%s has run %d" +
-                " meters.%n", name, length);
+    public boolean run(int length) {
+        return length <=maxRunDistance;
+
+    }
+
+    @Override
+    public boolean swim(int length) {
+        System.out.println("Cats cannot swim ...");
+        return false;
     }
 }
